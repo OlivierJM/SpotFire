@@ -7,9 +7,9 @@ import Post from './posts/CreatePosts'
 const App = () => (
   <BrowserRouter>
     <Fragment>
-      <Route path='/' component={Post} />
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} />
+      <Route exact path='/' component={Post} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/register" component={Register} />
     </Fragment>
   </BrowserRouter>
 )
