@@ -6,7 +6,8 @@ class Register extends Component{
     state = {
         email: '',
         pass:'',
-        name: ''
+        name: '',
+        confirmPass: ''
     }
 
     getText = ({ target: { value }}, type) => {
@@ -24,13 +25,19 @@ class Register extends Component{
                 this.setState({
                     name: value
                 })
+            case 'pass-confirm':
+                this.setState({
+                    confirmPass: value
+                })
             default:
                 break;
         }
     
     }
     registerUser = () => {
-        const { email, pass, name } = this.state;
+        const { email, pass, name, confirmPass } = this.state;
+
+        // check the password before creating the user
         const user = {
             email, 
             password: pass,
@@ -51,33 +58,51 @@ class Register extends Component{
             <Form>
             <Row form>
             <Col md={6}>
-                <Label for="exampleEmail">Name</Label>
-                    <Input
-                        type="name"
-                        value={name}
-                        placeholder="with a placeholder"
-                        onChange={e => this.getText(e, 'name')}
-                    />
+            <Label for="exampleEmail">Name</Label>
+                <Input
+                    type="name"
+                    value={name}
+                    placeholder="Name"
+                    onChange={e => this.getText(e, 'name')}
+                />
                 </Col>
-                <Col md={6}>
+            </Row>
+            <Row>
+            <Col md={6}>
                 <Label for="exampleEmail">Email</Label>
                     <Input
                         type="email"
                         value={email}
-                        placeholder="with a placeholder"
+                        placeholder="Email"
                         onChange={e => this.getText(e, 'email')}
                     />
                 </Col>
-                <Col md={6}>
+            </Row>
+            <Row>
+            <Col md={6}>
                 <Label for="exampleEmail">Password</Label>
                     <Input
                         type="password"
                         value={pass}
-                        placeholder="with a placeholder"
+                        placeholder="Password"
                         onChange={e => this.getText(e, 'pass')}
                     />
                 </Col>
-                <Button 
+            </Row>
+            <Row>
+            <Col md={6}>
+                <Label for="exampleEmail">Password</Label>
+                    <Input
+                        type="password"
+                        value={pass}
+                        placeholder="Confirm Password"
+                        onChange={e => this.getText(e, 'pass-confirm')}
+                    />
+                </Col>
+            </Row>
+            <br />
+            <Row>
+            <Button 
                     onClick={this.registerUser}
                     color="primary">Register</Button>
             </Row>

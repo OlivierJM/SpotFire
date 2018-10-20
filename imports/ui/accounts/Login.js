@@ -45,7 +45,7 @@ class Login extends Component{
                     <Input
                         type="email"
                         value={email}
-                        placeholder="with a placeholder"
+                        placeholder="Email "
                         onChange={e => this.getText(e, 'email')}
                     />
                 </Col>
@@ -54,7 +54,7 @@ class Login extends Component{
                     <Input
                         type="password"
                         value={pass}
-                        placeholder="with a placeholder"
+                        placeholder="Password"
                         onChange={e => this.getText(e, 'pass')}
                     />
                 </Col>
