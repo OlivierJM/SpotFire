@@ -1,13 +1,10 @@
-import React from 'react';
-import Hello from './Hello.jsx';
-import Info from './Info.jsx';
+import React, { Fragment } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom'
+import Login from './accounts/Login'
+import Register from './accounts/Register'
 
 const App = () => (
-  <div>
-    <h1>Welcome to Meteor!</h1>
-    <Hello />
-    <Info />
-  </div>
-);
+  <Login/>
+)
 
 export default App;

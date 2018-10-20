@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Row, Col, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import { Accounts } from 'meteor/accounts-base';
+import { Meteor } from 'meteor/meteor';
 
 class Login extends Component{
     state = {
@@ -24,7 +24,8 @@ class Login extends Component{
         }
     
     }
-    registerUser = () => {
+    loginUser = e => {
+        e.preventDefault()
         const { email, pass } = this.state;
         // login in the user
         Meteor.loginWithPassword(email, pass, err => {
@@ -51,7 +52,7 @@ class Login extends Component{
                 <Col md={6}>
                 <Label for="exampleEmail">Password</Label>
                     <Input
-                        type="email"
+                        type="password"
                         value={pass}
                         placeholder="with a placeholder"
                         onChange={e => this.getText(e, 'pass')}

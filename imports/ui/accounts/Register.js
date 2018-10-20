@@ -5,7 +5,8 @@ import { Accounts } from 'meteor/accounts-base';
 class Register extends Component{
     state = {
         email: '',
-        pass:''
+        pass:'',
+        name: ''
     }
 
     getText = ({ target: { value }}, type) => {
@@ -19,18 +20,22 @@ class Register extends Component{
                 this.setState({
                     pass: value
                 })
+            case 'name':
+                this.setState({
+                    name: value
+                })
             default:
                 break;
         }
     
     }
     registerUser = () => {
-        const { email, pass } = this.state;
+        const { email, pass, name } = this.state;
         const user = {
             email, 
-            pass,
+            password: pass,
             profile: {
-                name:'Olivier'
+                name
             }
         }
         Accounts.createUser(user, err => {
@@ -41,10 +46,19 @@ class Register extends Component{
 
 
     render(){
-        const { email, pass } = this.state
+        const { email, pass, name } = this.state
         return(
             <Form>
             <Row form>
+            <Col md={6}>
+                <Label for="exampleEmail">Name</Label>
+                    <Input
+                        type="name"
+                        value={name}
+                        placeholder="with a placeholder"
+                        onChange={e => this.getText(e, 'name')}
+                    />
+                </Col>
                 <Col md={6}>
                 <Label for="exampleEmail">Email</Label>
                     <Input
@@ -57,7 +71,7 @@ class Register extends Component{
                 <Col md={6}>
                 <Label for="exampleEmail">Password</Label>
                     <Input
-                        type="email"
+                        type="password"
                         value={pass}
                         placeholder="with a placeholder"
                         onChange={e => this.getText(e, 'pass')}
