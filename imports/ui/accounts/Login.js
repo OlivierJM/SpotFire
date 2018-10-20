@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Row, Col, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { Meteor } from 'meteor/meteor';
+import { Redirect, Link } from 'react-router-dom'
 
 class Login extends Component{
     state = {
@@ -29,7 +30,7 @@ class Login extends Component{
         const { email, pass } = this.state;
         // login in the user
         Meteor.loginWithPassword(email, pass, err => {
-            err ? console.log(err.reason) : console.log('successfully loggedn in the user')
+            err ? console.log(err.reason) : <Redirect to='/'/>
         })
 
     }
@@ -62,6 +63,7 @@ class Login extends Component{
                     onClick={this.loginUser}
                     color="primary">Login</Button>
             </Row>
+            <Link to='/register'>Register here </Link>
           </Form>
         )
     }

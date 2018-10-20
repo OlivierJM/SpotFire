@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Row, Col, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { Accounts } from 'meteor/accounts-base';
+import { Redirect, Link } from 'react-router-dom'
 
 class Register extends Component{
     state = {
@@ -46,7 +47,7 @@ class Register extends Component{
             }
         }
         Accounts.createUser(user, err => {
-            err ? console.log(err.reason) : console.log('successfully created the user')
+            err ? console.log(err.reason) : <Redirect to='/'/>
         }) 
 
     }
@@ -106,6 +107,7 @@ class Register extends Component{
                     onClick={this.registerUser}
                     color="primary">Register</Button>
             </Row>
+            <Link to='/login'>Login here </Link>
           </Form>
         )
     }
