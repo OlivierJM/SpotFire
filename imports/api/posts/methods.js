@@ -1,10 +1,10 @@
-import Meteor from 'meteor/meteor'
-import { Check } from 'meteor/check'
+import { Meteor } from 'meteor/meteor'
+import { check } from 'meteor/check'
 import { Posts } from './posts'
 
 Meteor.methods({
     createPost(post){
-        Check(post, Object)
+        check(post, Object)
         Posts.insert(post)
     }
 })
