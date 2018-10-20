@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Row, Col, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Row, Col, Form, FormGroup, Label, Input, Container } from "reactstrap";
 import { Meteor } from 'meteor/meteor';
 import { Redirect, Link } from 'react-router-dom'
 
@@ -39,6 +39,7 @@ class Login extends Component{
     render(){
         const { email, pass } = this.state
         return(
+            <Container>
             <Form>
             <Row form>
                 <Col md={6}>
@@ -65,6 +66,7 @@ class Login extends Component{
             </Row>
             <Link to='/register'>Register here </Link>
           </Form>
+          </Container>
         )
     }
 }

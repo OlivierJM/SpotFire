@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Row, Col, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Row, Col, Form, FormGroup, Label, Input, Container } from "reactstrap";
 import { Accounts } from 'meteor/accounts-base';
 import { Redirect, Link } from 'react-router-dom'
 
@@ -56,6 +56,7 @@ class Register extends Component{
     render(){
         const { email, pass, name } = this.state
         return(
+            <Container>
             <Form>
             <Row form>
             <Col md={6}>
@@ -109,6 +110,7 @@ class Register extends Component{
             </Row>
             <Link to='/login'>Login here </Link>
           </Form>
+          </Container>
         )
     }
 }
