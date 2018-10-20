@@ -11,7 +11,8 @@ class CreatePost extends Component{
     }
     createPost = e => {
         e.preventDefault()
-        const { post } = this.state
+        const { post, latitude, longitude } = this.state
+        
     }
     getPosition = position => {
         const { longitude, latitude } = position.coords
