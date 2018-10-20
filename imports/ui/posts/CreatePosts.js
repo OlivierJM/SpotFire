@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Button, Row, Col, Form, FormGroup, Label, Input, Container } from "reactstrap";
+import React, { Component, Fragment } from "react";
+import { Button, Row, Col, Form, FormGroup, Label, Input, Container, Alert } from "reactstrap";
 import { Meteor } from 'meteor/meteor';
 import { Redirect, Link } from 'react-router-dom'
 import { withTracker } from 'meteor/react-meteor-data'
@@ -29,8 +29,15 @@ class CreatePost extends Component{
             createdAt: new Date()
         }
         Meteor.call('createPost', postDetails, err => {
-            err ? console.log(err.reason) : console.log('created a post' )
+            err ? console.log(err.reason) 
+            : 
+            // clear the fields
+            this.setState({
+                post: '',
+                title: ''
+            })
         })
+
     }
     getPosition = position => {
         const { longitude, latitude } = position.coords
@@ -101,9 +108,11 @@ class CreatePost extends Component{
                 color="primary">CreatePost
             </Button>
             </Row>
+            <br />
+            <br />
             <Row>
                 {
-                    posts ? posts.map(post => (
+                    posts.length ? posts.map(post => (
                         <Post 
                             key={post._id}
                             post={post.post} 
@@ -112,7 +121,9 @@ class CreatePost extends Component{
                             />
                     ))
                     :
-                    'loading ...'
+                    <Alert color="dark">
+                        No Posts yet
+                    </Alert>
                 }
             </Row>
           </Form>
