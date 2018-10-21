@@ -28,7 +28,8 @@ class Login extends Component{
     loginUser = e => {
         e.preventDefault()
         const { email, pass } = this.state;
-        // login in the user
+        // login in the user 
+        // 
         Meteor.loginWithPassword(email, pass, err => {
             err ? console.log(err.reason) : <Redirect to='/'/>
         })

@@ -17,19 +17,22 @@ class Register extends Component{
                 this.setState({
                     email: value
                 })
-                break;
+                break
             case 'pass':
                 this.setState({
                     pass: value
                 })
+                break
             case 'name':
                 this.setState({
                     name: value
                 })
+                break
             case 'pass-confirm':
                 this.setState({
                     confirmPass: value
                 })
+                break
             default:
                 break;
         }
@@ -54,7 +57,7 @@ class Register extends Component{
 
 
     render(){
-        const { email, pass, name } = this.state
+        const { email, pass, name, confirmPass } = this.state
         return(
             <Container>
             <Form>
@@ -96,7 +99,7 @@ class Register extends Component{
                 <Label for="exampleEmail">Password</Label>
                     <Input
                         type="password"
-                        value={pass}
+                        value={confirmPass}
                         placeholder="Confirm Password"
                         onChange={e => this.getText(e, 'pass-confirm')}
                     />

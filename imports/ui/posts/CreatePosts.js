@@ -11,7 +11,8 @@ class CreatePost extends Component{
         post: '',
         latitude: '',
         longitude:'',
-        title: ''
+        title: '',
+        name: ''
     }
     createPost = e => {
         e.preventDefault()
