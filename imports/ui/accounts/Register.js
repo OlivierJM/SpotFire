@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Button, Row, Col, Form, FormGroup, Label, Input, Container } from "reactstrap";
 import { Accounts } from 'meteor/accounts-base';
 import { Redirect, Link } from 'react-router-dom'
+import Header from '../components/header'
+import Footer from '../components/footer'
 
 class Register extends Component{
     state = {
@@ -36,14 +38,14 @@ class Register extends Component{
             default:
                 break;
         }
-    
+
     }
     registerUser = () => {
         const { email, pass, name, confirmPass } = this.state;
 
         // check the password before creating the user
         const user = {
-            email, 
+            email,
             password: pass,
             profile: {
                 name
@@ -51,7 +53,7 @@ class Register extends Component{
         }
         Accounts.createUser(user, err => {
             err ? console.log(err.reason) : <Redirect to='/'/>
-        }) 
+        })
 
     }
 
@@ -59,6 +61,8 @@ class Register extends Component{
     render(){
         const { email, pass, name, confirmPass } = this.state
         return(
+            <Fragment>
+            <Header />
             <Container>
             <Form>
             <Row form>
@@ -107,13 +111,15 @@ class Register extends Component{
             </Row>
             <br />
             <Row>
-            <Button 
+            <Button
                     onClick={this.registerUser}
                     color="primary">Register</Button>
             </Row>
             <Link to='/login'>Login here </Link>
           </Form>
           </Container>
+          <Footer/>
+          </Fragment>
         )
     }
 }

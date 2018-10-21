@@ -5,6 +5,8 @@ import { Redirect, Link } from 'react-router-dom'
 import { withTracker } from 'meteor/react-meteor-data'
 import { Posts } from '../../api/posts/posts'
 import { Post } from './Post'
+import Header from '../components/header'
+import Footer from '../components/footer'
 
 class CreatePost extends Component{
     state = {
@@ -30,8 +32,8 @@ class CreatePost extends Component{
             createdAt: new Date()
         }
         Meteor.call('createPost', postDetails, err => {
-            err ? console.log(err.reason) 
-            : 
+            err ? console.log(err.reason)
+            :
             // clear the fields
             this.setState({
                 post: '',
@@ -64,24 +66,27 @@ class CreatePost extends Component{
     }
     componentDidMount(){
         if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(this.getPosition, this.handleError)  
+            navigator.geolocation.getCurrentPosition(this.getPosition, this.handleError)
           } else {
             console.log('location is not enabled on this browser')
           }
     }
 
+
     render(){
         const { post, title } = this.state
         const { posts } = this.props
         return(
+            <Fragment>
+             <Header />
             <Container>
             <Form>
             <Row>
             <Col md={6}>
                 <FormGroup>
                     <Label for="post">Title </Label>
-                    <Input 
-                        type="text" 
+                    <Input
+                        type="text"
                         value={title}
                         onChange={this.getTitle}
                         />
@@ -92,10 +97,10 @@ class CreatePost extends Component{
                 <Col md={6}>
                 <FormGroup>
                     <Label for="post"> Post </Label>
-                    <Input 
-                        type="textarea" 
-                        name="text" 
-                        id="post" 
+                    <Input
+                        type="textarea"
+                        name="text"
+                        id="post"
                         value={post}
                         onChange={this.getText}
                         />
@@ -104,7 +109,7 @@ class CreatePost extends Component{
 
             </Row>
             <Row>
-            <Button 
+            <Button
                 onClick={this.createPost}
                 color="primary">CreatePost
             </Button>
@@ -114,9 +119,9 @@ class CreatePost extends Component{
             <Row>
                 {
                     posts.length ? posts.map(post => (
-                        <Post 
+                        <Post
                             key={post._id}
-                            post={post.post} 
+                            post={post.post}
                             authorName={post.authorName}
                             title={post.title}
                             />
@@ -129,6 +134,8 @@ class CreatePost extends Component{
             </Row>
           </Form>
           </Container>
+          <Footer/>
+          </Fragment>
         )
     }
 }

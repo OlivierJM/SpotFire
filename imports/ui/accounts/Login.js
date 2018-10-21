@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Button, Row, Col, Form, FormGroup, Label, Input, Container } from "reactstrap";
 import { Meteor } from 'meteor/meteor';
 import { Redirect, Link } from 'react-router-dom'
+import Header from '../components/header'
+import Footer from '../components/footer'
 
 class Login extends Component{
     state = {
@@ -23,13 +25,13 @@ class Login extends Component{
             default:
                 break;
         }
-    
+
     }
     loginUser = e => {
         e.preventDefault()
         const { email, pass } = this.state;
-        // login in the user 
-        // 
+        // login in the user
+        //
         Meteor.loginWithPassword(email, pass, err => {
             err ? console.log(err.reason) : <Redirect to='/'/>
         })
@@ -40,6 +42,8 @@ class Login extends Component{
     render(){
         const { email, pass } = this.state
         return(
+            <Fragment>
+            <Header />
             <Container>
             <Form>
             <Row form>
@@ -52,6 +56,8 @@ class Login extends Component{
                         onChange={e => this.getText(e, 'email')}
                     />
                 </Col>
+            </Row>
+            <Row>
                 <Col md={6}>
                 <Label for="exampleEmail">Password</Label>
                     <Input
@@ -61,13 +67,19 @@ class Login extends Component{
                         onChange={e => this.getText(e, 'pass')}
                     />
                 </Col>
-                <Button 
+            </Row>
+            <br />
+            <Row>
+                <Button
                     onClick={this.loginUser}
                     color="primary">Login</Button>
             </Row>
+
             <Link to='/register'>Register here </Link>
           </Form>
           </Container>
+          <Footer/>
+          </Fragment>
         )
     }
 }
