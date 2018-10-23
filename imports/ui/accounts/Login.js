@@ -45,7 +45,7 @@ class Login extends Component{
             <Fragment>
             <Header />
             <Container>
-            <Form>
+            <Form className="reg-form">
             <Row form>
                 <Col md={6}>
                 <Label for="exampleEmail">Email</Label>

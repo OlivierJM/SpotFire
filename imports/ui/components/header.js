@@ -73,8 +73,8 @@ class Header extends Component {
                 </DropdownMenu>
               </UncontrolledDropdown> */}
               <NavItem><NavLink href="#">Reports</NavLink></NavItem>
-              <NavItem><NavLink href="#">Alerts</NavLink></NavItem>
-              <NavItem><NavLink href="#">Tips</NavLink></NavItem>
+              <NavItem><NavLink href="/register">Alerts</NavLink></NavItem>
+              <NavItem><NavLink href="/login">Tips</NavLink></NavItem>
               <NavItem><NavLink href="#">Community</NavLink></NavItem>
             </Nav>
           </Collapse>

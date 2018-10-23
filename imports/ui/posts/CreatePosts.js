@@ -80,7 +80,7 @@ class CreatePost extends Component{
             <Fragment>
              <Header />
             <Container>
-            <Form>
+            <Form className="reg-form">
             <Row>
             <Col md={6}>
                 <FormGroup>
