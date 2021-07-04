@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "busboy": "^0.2.14",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "fluent-ffmpeg": "^2.1.2",
+    "http-errors": "^1.7.1",
+    "ioredis": "^4.0.0",
+    "moleculer": "^0.13.3",
+    "moleculer-web": "^0.8.2",
+    "mongodb": "^3.1.6",
+    "morgan": "^1.9.1",
+    "rimraf": "^2.6.2"
+  }
+}
